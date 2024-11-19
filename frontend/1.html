@@ -1,0 +1,67 @@
+<!DOCTYPE html>  
+<html lang="en">  
+
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Leaderboard</title>  
+    <style>  
+        table {  
+            width: 100%;  
+            border-collapse: collapse;  
+        }  
+        
+        th, td {  
+            border: 1px solid #ddd;  
+            padding: 8px;  
+            text-align: center;  
+        }  
+        
+        .pinned {  
+            background-color: yellow; /* Highlight pinned rows */  
+        }  
+    </style>  
+</head>  
+
+<body>  
+    <h1>Leaderboard</h1>  
+    <table id="leaderboard">  
+        <thead>  
+            <tr>  
+                <th>Name</th>  
+                <th>Score</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            <tr>  
+                <td>Naman</td>  
+                <td>1500</td>  
+            </tr>  
+            <tr>  
+                <td>Parth</td>  
+                <td>2000</td>  
+            </tr>  
+            <tr>  
+                <td>Himanshu</td>  
+                <td>1200</td>  
+            </tr>  
+        </tbody>  
+    </table>  
+
+    <script>  
+        const rows = document.querySelectorAll('#leaderboard tbody tr');  
+        
+        rows.forEach(row => {  
+            row.addEventListener('click', () => {  
+                // Pinned row logic  
+                rows.forEach(r => r.classList.remove('pinned')); // Remove any existing pins  
+                row.classList.add('pinned'); // Pin the selected row  
+                
+                const tbody = row.parentNode;  
+                tbody.prepend(row); // Move the clicked row to the top  
+            });  
+        });  
+    </script>  
+</body>  
+
+</html>
